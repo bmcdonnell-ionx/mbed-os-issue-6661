@@ -1,4 +1,5 @@
 #include "mbed.h"
+#include "cmsis.h" // SCnSCB->ACTLR, etc.
 
 static void bgThreadTask()
 {
@@ -16,6 +17,11 @@ static void bgThreadTask()
 
 int main()
 {
+   // make fault handler report precise crash location
+   //   https://github.com/ARMmbed/mbed-os/issues/6661#issuecomment-383149796
+   //   https://os.mbed.com/docs/v5.8/tutorials/analyzing-mbed-os-crash-dump.html#debugging-imprecise-bus-faults
+   SCnSCB->ACTLR |= SCnSCB_ACTLR_DISDEFWBUF_Msk;
+
    Thread bgThread;
 
    Callback<void()> bgThreadCB(bgThreadTask);
