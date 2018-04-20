@@ -1,0 +1,13 @@
+/.settings/
+.cproject
+.project
+
+/BUILD/
+/Debug/
+/Release/
+
+GettingStarted.html
+makefile.targets
+mbed_config.h
+mbed_settings.py
+mbed_settings.pyc
