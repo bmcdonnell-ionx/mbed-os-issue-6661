@@ -1,13 +1,5 @@
 #include "mbed.h"
 
-static UARTSerial SerialPort(USBTX, USBRX, 115200);
-
-// redirect stdio to this serial port
-FileHandle *mbed::mbed_override_console(int fd)
-{
-   return &SerialPort;
-}
-
 static void bgThreadTask()
 {
    while (true)
